@@ -39,13 +39,14 @@ ResumeMatcher_multilingual/
 
 You can switch between the following models in `main.py` or `app.py`:
 
-| Model                                                         | Description                                 | Link                                                                                     |
-| ------------------------------------------------------------- | ------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| `intfloat/multilingual-e5-small`                              | Fast, multilingual, trained for retrieval   | [🔗](https://huggingface.co/intfloat/multilingual-e5-small)                              |
-| `intfloat/multilingual-e5-base`                               | Best balance of speed and quality           | [🔗](https://huggingface.co/intfloat/multilingual-e5-base)                               |
-| `intfloat/multilingual-e5-large`                              | Highest accuracy (larger and slower)        | [🔗](https://huggingface.co/intfloat/multilingual-e5-large)                              |
-| `sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2` | General-purpose multilingual embeddings     | [🔗](https://huggingface.co/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2) |
-| `anass1209/resume-job-matcher-all-MiniLM-L6-v2`               | Resume-specific multilingual MiniLM variant | [🔗](https://huggingface.co/anass1209/resume-job-matcher-all-MiniLM-L6-v2)               |
+|  Model  | Description  |
+| ------- | ------------ | 
+|[`intfloat/multilingual-e5-small`](https://huggingface.co/intfloat/multilingual-e5-small) | Fast, multilingual, trained for retrieval 
+|[`intfloat/multilingual-e5-base`](https://huggingface.co/intfloat/multilingual-e5-base) | Best balance of speed and quality 
+|[`intfloat/multilingual-e5-large`](https://huggingface.co/intfloat/multilingual-e5-large) | Highest accuracy (larger and slower)
+|[`sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2`](https://huggingface.co/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2) | General-purpose multilingual embeddings
+|[`anass1209/resume-job-matcher-all-MiniLM-L6-v2`](https://huggingface.co/anass1209/resume-job-matcher-all-MiniLM-L6-v2)| Resume-specific multilingual MiniLM variant
+
 
 ---
 
@@ -54,7 +55,7 @@ You can switch between the following models in `main.py` or `app.py`:
 ### ▶️ Command-line (CLI)
 
 ```bash
-python main.py --jd_file ./jds/software_engineer.txt --cv_folder ./cvs --top_k 5
+python main.py --jd_file ./jds/software_engineer.txt --cv_folder ./cvs 
 ```
 
 ### 💻 Streamlit Web App
