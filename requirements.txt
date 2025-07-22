@@ -1,0 +1,11 @@
+langchain
+langchain-chroma
+langchain-huggingface
+sentence-transformers
+pdfplumber
+openai
+ollama
+tqdm
+python-dotenv
+langdetect
+deep-translator

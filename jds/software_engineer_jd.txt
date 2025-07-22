@@ -1,0 +1,25 @@
+Job Title: Software Engineer  
+Location: Remote or Cairo, Egypt  
+Type: Full-time  
+
+We are looking for a skilled and motivated Software Engineer to join our backend and platform development team. You will be responsible for designing, implementing, and maintaining scalable software solutions that power our core services.
+
+Responsibilities:
+- Design and build RESTful APIs and backend services using modern technologies.
+- Collaborate with product managers, designers, and other engineers to deliver high-quality features.
+- Write clean, efficient, and maintainable code.
+- Troubleshoot, debug, and upgrade existing software systems.
+- Follow agile methodologies and participate in code reviews and sprint planning.
+
+Qualifications:
+- Bachelor's degree in Computer Science, Software Engineering, or a related field.
+- Strong proficiency in one or more backend languages (e.g., Python, Java, C#, Go).
+- Experience with web frameworks such as Django, Flask, ASP.NET, or Spring Boot.
+- Good understanding of REST APIs, relational databases, and Git.
+- Familiarity with containerization and cloud platforms (Docker, AWS, GCP, etc.).
+- Excellent communication skills and a team-first attitude.
+
+Preferred:
+- Experience with CI/CD pipelines and DevOps practices.
+- Knowledge of frontend technologies (React, Angular) is a plus.
+- Open-source contributions or personal software projects.

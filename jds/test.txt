@@ -1,0 +1,26 @@
+Job Title: Electrical Commissioning Engineer – Hydropower Projects  
+Location: On-site, Europe (with travel to Nordic countries)  
+Type: Full-time  
+
+We are seeking a technically skilled and field-ready Electrical Commissioning Engineer to support the startup and testing of hydroelectric power plants. You will join a team that manages the integration, troubleshooting, and calibration of electrical and mechanical systems in large-scale renewable energy installations.
+
+Responsibilities:
+- Perform on-site commissioning of hydroelectric facilities, including sensors, DAQ systems, and control interfaces.
+- Conduct electrical and mechanical testing, fault diagnosis, and corrective action.
+- Read and interpret electrical schematics, wiring diagrams, and PLC documentation.
+- Coordinate with mechanical, civil, and electrical teams during project handover phases.
+- Perform calibration and testing of measurement instruments (e.g., LabVIEW, NI systems).
+- Travel to client sites for hands-on fieldwork (domestic and international).
+
+Qualifications:
+- Associate's or Bachelor's degree in Electrical Engineering, Mechatronics, or related technical field.
+- 2+ years of experience in electrical installation, testing, or commissioning.
+- Knowledge of hydroelectric or renewable energy systems is a strong plus.
+- Familiarity with tools like SolidWorks, AutoCAD, NI LabVIEW, or DAQ software.
+- Proficiency in troubleshooting control panels and interpreting technical documentation.
+- Good command of English; German, Russian, or Scandinavian languages are a plus.
+- Valid driving license and ability to work abroad.
+
+Preferred:
+- Certifications related to hydropower or ESA Waterways.
+- Hands-on skills in welding, mechanical assembly, or drone surveying.
