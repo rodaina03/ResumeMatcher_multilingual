@@ -1,11 +1,7 @@
-langchain
-langchain-chroma
-langchain-huggingface
-sentence-transformers
-pdfplumber
-openai
-ollama
-tqdm
-python-dotenv
+numpy
+faiss-cpu
+PyMuPDF
 langdetect
-deep-translator
+sentence-transformers
+scikit-learn
+streamlit

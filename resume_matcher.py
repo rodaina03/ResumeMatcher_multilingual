@@ -45,7 +45,10 @@ def main():
     args = parser.parse_args()
 
     print("🔍 Loading embedding model...")
-    model = SentenceTransformer("intfloat/multilingual-e5-large")
+    model = SentenceTransformer("intfloat/multilingual-e5-large") # used also small, base and large
+    # model = SentenceTransformer("anass1209/resume-job-matcher-all-MiniLM-L6-v2") 
+    # model = SentenceTransformer("sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2")
+
 
     print(f"\n📂 Reading CVs from: {args.cv_folder}")
     cv_texts, cv_filenames = read_pdfs_from_folder(args.cv_folder)
