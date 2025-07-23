@@ -13,12 +13,11 @@ A multilingual, domain-agnostic semantic search engine that matches candidate CV
 
 This tool ranks and retrieves the most relevant CVs for a given job description—regardless of role, language, or domain.
 
-* ✅ Supports **100+ languages**
-* ✅ Uses **chunked CV search** for higher semantic resolution
-* ✅ Offers both **Streamlit UI** and **terminal CLI**
-* ✅ Works across unrelated domains (e.g., tech vs hospitality)
-* ✅ Pluggable support for **E5** and **MiniLM** models
-
+* ✅ Supports **100+ languages**  
+* ✅ Uses **chunked CV search** for higher semantic resolution  
+* ✅ Offers both **Streamlit UI** and **terminal CLI**  
+* ✅ Works across unrelated domains (e.g., tech vs hospitality)  
+* ✅ Powered by **BAAI/bge-m3** — a cutting-edge multilingual retrieval model
 ---
 
 ## 📦 Project Structure
