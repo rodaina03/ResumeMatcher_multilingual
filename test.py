@@ -1,6 +1,6 @@
 import os
 import re
-import fitz
+import fitz  # PyMuPDF
 import numpy as np
 import faiss
 from langdetect import detect
@@ -36,20 +36,25 @@ def read_pdfs_from_folder(folder_path):
 def chunk_text(text, chunk_size=500):
     return [text[i:i+chunk_size] for i in range(0, len(text), chunk_size)]
 
-# Main logic
+def build_index(model, all_chunks):
+    embeddings = model.encode(all_chunks, convert_to_numpy=True)
+    embeddings = normalize(embeddings, axis=1)
+    dim = embeddings.shape[1]
+    index = faiss.IndexFlatIP(dim)
+    index.add(embeddings)
+    return index, embeddings
+
 def main():
-    parser = argparse.ArgumentParser(description="CV Similarity Search with Chunking")
+    parser = argparse.ArgumentParser(description="CV Similarity Search with Dual-Model Score Fusion")
     parser.add_argument("--cv_folder", type=str, default="cvs", help="Folder with CV PDFs")
     parser.add_argument("--jd_file", type=str, required=True, help="Path to job description .txt file")
-    parser.add_argument("--top_k", type=int, default=5, help="Number of top matches to return")
+    parser.add_argument("--top_k", type=int, default=8, help="Number of top matches to return")
+    parser.add_argument("--alpha", type=float, default=0.5, help="Weight for model A in score fusion (0-1)")
     args = parser.parse_args()
 
-    print("🔍 Loading embedding model...")
-    # model = SentenceTransformer("intfloat/multilingual-e5-large") # used also small, base and large
-    model = SentenceTransformer("BAAI/bge-m3")  # used also base, large, multilingual
-    # model = SentenceTransformer("anass1209/resume-job-matcher-all-MiniLM-L6-v2") 
-    # model = SentenceTransformer("sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2")
-
+    print("🔍 Loading embedding models...")
+    model_a = SentenceTransformer("intfloat/multilingual-e5-large")  # Model A
+    model_b = SentenceTransformer("BAAI/bge-m3")                     # Model B
 
     print(f"\n📂 Reading CVs from: {args.cv_folder}")
     cv_texts, cv_filenames = read_pdfs_from_folder(args.cv_folder)
@@ -62,40 +67,47 @@ def main():
     chunk_map = []  # (cv_index, chunk_index)
     for i, text in enumerate(cv_texts):
         chunks = chunk_text(text)
-        all_chunks.extend([f"passage: {ch}" for ch in chunks])
+        all_chunks.extend(chunks)
         chunk_map.extend([(i, j) for j in range(len(chunks))])
 
-    chunk_embeddings = model.encode(all_chunks, convert_to_numpy=True)
-    chunk_embeddings = normalize(chunk_embeddings, axis=1)
+    print("⚙️ Building indexes for both models...")
+    encoded_chunks_a = [f"passage: {chunk}" for chunk in all_chunks]
+    encoded_chunks_b = [chunk for chunk in all_chunks]
 
-    dim = chunk_embeddings.shape[1]
-    index = faiss.IndexFlatIP(dim)
-    index.add(chunk_embeddings)
+    index_a, emb_a = build_index(model_a, encoded_chunks_a)
+    index_b, emb_b = build_index(model_b, encoded_chunks_b)
 
-    # Load JD
     with open(args.jd_file, 'r', encoding='utf-8') as f:
         job_description = clean_text(f.read())
     print("\n📄 Job description loaded.")
 
-    query_embedding = model.encode([f"query: {job_description}"], convert_to_numpy=True)
-    query_embedding = normalize(query_embedding, axis=1)
+    print("🔍 Encoding job description...")
+    query_a = model_a.encode([f"query: {job_description}"], convert_to_numpy=True)
+    query_b = model_b.encode([job_description], convert_to_numpy=True)
+    query_a = normalize(query_a, axis=1)
+    query_b = normalize(query_b, axis=1)
 
-    print("🚀 Running similarity search...")
-    scores, indices = index.search(query_embedding, len(all_chunks))
+    print("🚀 Performing similarity search on both models...")
+    scores_a, idx_a = index_a.search(query_a, len(all_chunks))
+    scores_b, idx_b = index_b.search(query_b, len(all_chunks))
 
-    # Collect best-scoring chunk per CV
-    seen = {}
-    for i in indices[0]:
-        cv_idx, chunk_idx = chunk_map[i]
-        score = float(np.dot(query_embedding[0], chunk_embeddings[i]))
-        if cv_idx not in seen or score > seen[cv_idx][0]:
-            seen[cv_idx] = (score, chunk_idx)
+    fused_scores = {}
+    for rank in range(len(all_chunks)):
+        idx = idx_a[0][rank]
+        cv_idx, chunk_idx = chunk_map[idx]
+        score_a = float(np.dot(query_a[0], emb_a[idx]))
+        score_b = float(np.dot(query_b[0], emb_b[idx]))
+        fused = args.alpha * score_a + (1 - args.alpha) * score_b
+        if cv_idx not in fused_scores or fused > fused_scores[cv_idx][0]:
+            fused_scores[cv_idx] = (fused, chunk_idx)
 
-    ranked = sorted([(cv_filenames[i], score, chunk_text(cv_texts[i])[j])
-                     for i, (score, j) in seen.items()],
-                    key=lambda x: x[1], reverse=True)
+    ranked = sorted(
+        [(cv_filenames[i], score, chunk_text(cv_texts[i])[j])
+         for i, (score, j) in fused_scores.items()],
+        key=lambda x: x[1], reverse=True
+    )
 
-    print("\n🎯 Top Matching CVs (Best-Matching Chunk Preview):\n")
+    print(f"\n🎯 Top {args.top_k} Matching CVs (Score Fusion α={args.alpha}):\n")
     for rank, (filename, score, best_chunk) in enumerate(ranked[:args.top_k], 1):
         print(f"Rank {rank} | Score: {score:.4f} | File: {filename}")
         # print("-" * 60)

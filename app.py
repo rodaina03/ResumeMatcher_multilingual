@@ -55,7 +55,7 @@ if match_clicked:
         st.warning("⚠️ Please upload at least one CV.")
     else:
         with st.spinner("🔍 Loading embedding model..."):
-            model = SentenceTransformer("intfloat/multilingual-e5-large")
+            model = SentenceTransformer("BAAI/bge-m3")
 
         with st.spinner("📂 Reading uploaded CVs..."):
             cv_texts, cv_filenames = read_uploaded_pdfs(uploaded_cvs)

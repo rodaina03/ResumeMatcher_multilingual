@@ -1,0 +1,54 @@
+Job Title: Junior Full Stack Developer
+
+Location: Cairo, Egypt (Hybrid/Remote options available)
+Job Type: Entry-Level, Full-Time
+Start Date: Immediate or Upon Graduation Confirmation (Expected 07/2025)
+
+Job Overview
+We are seeking a motivated and technically skilled Junior Full Stack Developer to join our growing engineering team. This role is ideal for recent graduates passionate about designing and developing robust web and mobile applications. You will work on real-world projects involving microservices, UI/UX design, and scalable backend systems using modern frameworks and cloud-native tools.
+
+Key Responsibilities
+Collaborate in agile teams to build and maintain full-stack applications using React.js, Node.js, Java, and Spring Boot.
+
+Contribute to UI/UX design and front-end implementation using Figma, Bootstrap, and Flutter.
+
+Develop and integrate RESTful APIs and handle asynchronous messaging using tools like RabbitMQ.
+
+Participate in containerization (Docker) and orchestration (Kubernetes) for scalable deployments.
+
+Assist in optimizing web apps for responsiveness, accessibility, and SEO.
+
+Support ongoing project work including sketch-based UIs, food sustainability platforms, and healthcare management systems.
+
+Required Qualifications
+Bachelor’s degree (or final year) in Computer Science, Engineering, or a related field.
+
+Experience with full-stack development projects (academic or freelance).
+
+Proficiency in Java, JavaScript, C++, C#, and Python.
+
+Strong foundation in React.js, Flutter, .NET, and MongoDB/PostgreSQL.
+
+Familiarity with microservices architecture, Docker, and REST APIs.
+
+Nice to Have
+Exposure to game development with Unity and C#.
+
+Understanding of design patterns and software architecture principles.
+
+Experience with WordPress and freelance project delivery.
+
+Soft Skills
+Strong communication and collaboration skills.
+
+Ability to adapt quickly to new tools and frameworks.
+
+Detail-oriented with strong problem-solving capabilities.
+
+Languages
+English: Full Professional Proficiency
+
+Arabic: Native
+
+German: Basic/Working Proficiency
+
