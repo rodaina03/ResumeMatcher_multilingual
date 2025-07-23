@@ -35,18 +35,9 @@ ResumeMatcher_multilingual/
 
 ---
 
-## ⚙️ Supported Embedding Models
+## ⚙️ Supported Embedding Model
 
-You can switch between the following models in `main.py` or `app.py`:
-
-|  Model  | Description  |
-| ------- | ------------ | 
-|[`intfloat/multilingual-e5-small`](https://huggingface.co/intfloat/multilingual-e5-small) | Fast, multilingual, trained for retrieval 
-|[`intfloat/multilingual-e5-base`](https://huggingface.co/intfloat/multilingual-e5-base) | Best balance of speed and quality 
-|[`intfloat/multilingual-e5-large`](https://huggingface.co/intfloat/multilingual-e5-large) | Highest accuracy (larger and slower)
-|[`sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2`](https://huggingface.co/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2) | General-purpose multilingual embeddings
-|[`anass1209/resume-job-matcher-all-MiniLM-L6-v2`](https://huggingface.co/anass1209/resume-job-matcher-all-MiniLM-L6-v2)| Resume-specific multilingual MiniLM variant
-
+This project uses the [`BAAI/bge-m3`](https://huggingface.co/BAAI/bge-m3) model — a state-of-the-art multilingual embedding model optimized for dense retrieval tasks across 100+ languages.
 
 ---
 
@@ -60,11 +51,16 @@ python main.py --jd_file ./jds/software_engineer.txt --cv_folder ./cvs
 
 ### 💻 Streamlit Web App
 
+
 ```bash
 streamlit run app.py
 ```
 
 Then open your browser at: [http://localhost:8501](http://localhost:8501)
+
+#### Streamlit UI Preview
+
+![Streamlit UI](./assets/ui.png)
 
 ---
 
